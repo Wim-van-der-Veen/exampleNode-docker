@@ -16,7 +16,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Build and Push
+- stage: Build_and_Push
   displayName: Build image
   jobs:
   - job: Build
