@@ -41,3 +41,5 @@ stages:
        inputs:
          repository: 'wimvanderveen/examplenode'
          command: 'push'
+         tags: |
+          $(tag)
