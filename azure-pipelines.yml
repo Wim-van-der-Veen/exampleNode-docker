@@ -16,7 +16,7 @@ stages:
   displayName: Build image
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build $(tag)
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ stages:
   displayName: Push image
   jobs:
   - job: Push
-    displayName: Push
+    displayName: Push $(tag)
     pool:
       vmImage: ubuntu-latest
     steps:
