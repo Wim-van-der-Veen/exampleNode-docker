@@ -39,7 +39,7 @@ stages:
      - task: Docker@2
        displayName: Push the image
        inputs:
-         repository: 'wimvanderveen/examplenode'
+         repository: 'wimvanderveen/examplenode-docker'
          command: 'push'
          tags: |
           $(tag)
