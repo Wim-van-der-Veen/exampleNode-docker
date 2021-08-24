@@ -10,19 +10,22 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  imageName: 'wimvanderveen/examplenode-docker'
+
+pool:
+  vmImage: ubuntu-latest
 
 stages:
 - stage: Build
   displayName: Build image
   jobs:
   - job: Build
-    displayName: Build $(tag)
-    pool:
-      vmImage: ubuntu-latest
+    displayName: Build
     steps:
-    - task: Docker@1
+    - task: Docker@2
       displayName: Build an image
       inputs:
+        repository: $(imageName)
         command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
@@ -32,14 +35,12 @@ stages:
   displayName: Push image
   jobs:
   - job: Push
-    displayName: Push $(tag)
-    pool:
-      vmImage: ubuntu-latest
+    displayName: Push
     steps:
      - task: Docker@2
        displayName: Push the image
        inputs:
-         repository: 'wimvanderveen/examplenode-docker'
+         repository: $(imageName)
          command: 'push'
          tags: |
           $(tag)
